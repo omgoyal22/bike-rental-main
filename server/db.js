@@ -1,19 +1,20 @@
+require("dotenv").config(); // Load environment variables
 const mongoose = require("mongoose");
 
 function connectDB() {
-  mongoose.connect(
-    "mongodb+srv://goyalom936:Omgoyal90@cluster0.tr8ah6c.mongodb.net/",
-    { useUnifiedTopology: true, useNewUrlParser: true }
-  );
+  mongoose.connect(process.env.MONGODB_URI, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+  });
 
   const connection = mongoose.connection;
 
   connection.on("connected", () => {
-    console.log("Mongo DB Connection Successfull");
+    console.log("MongoDB Connection Successful");
   });
 
-  connection.on("error", () => {
-    console.log("Mongo DB connection Error");
+  connection.on("error", (err) => {
+    console.log("MongoDB Connection Error:", err);
   });
 }
 

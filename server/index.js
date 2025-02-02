@@ -1,10 +1,14 @@
+require("dotenv").config(); // Load environment variables
+
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const dbConnection = require("./db");
-const port = process.env.PORT || 5000;
-app.use(express.json());
-var cors = require("cors");
 
+const port = process.env.PORT || 5000;
+const mongoURL = process.env.MONGODB_URL; // Get MongoDB URL from env
+
+app.use(express.json());
 app.use(cors());
 
 const AdminLoginRoute = require("./routes/adminLogin");
@@ -19,4 +23,4 @@ app.use("/api/admin/", AdminLoginRoute);
 
 app.get("/", (req, res) => res.send("Hello Pumpkin"));
 
-app.listen(port, () => console.log(`server running on port ${port}`));
+app.listen(port, () => console.log(`Server running on port ${port}`));
