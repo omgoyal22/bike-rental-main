@@ -1,6 +1,6 @@
 import axios from "axios";
 import { message } from "antd";
-const baseURL = "https://bike-rental-main.onrender.com/api/";
+const baseURL = "https://bike-rental-main.onrender.com/api";
 
 export const getAllCars = () => async (dispatch) => {
   dispatch({ type: "LOADING", payload: true });
