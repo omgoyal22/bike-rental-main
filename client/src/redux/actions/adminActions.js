@@ -5,7 +5,7 @@ export const adminLogin = (reqObj) => async (dispatch) => {
   dispatch({ type: "LOADING", payload: true });
 
   try {
-    const response = await axios.post("/admin/login", reqObj);
+    const response = await axios.post("https://bike-rental-main.onrender.com/api/admin/login", reqObj);
     localStorage.setItem("admin", JSON.stringify(response.data));
     message.success("Login Success");
     dispatch({ type: "LOADING", payload: false });
