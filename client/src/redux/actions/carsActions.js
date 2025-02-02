@@ -1,11 +1,12 @@
 import axios from "axios";
 import { message } from "antd";
+const baseURL = "https://bike-rental-main.onrender.com/api/";
 
 export const getAllCars = () => async (dispatch) => {
   dispatch({ type: "LOADING", payload: true });
 
   try {
-    const response = await axios.get("bikes/getallbikes");
+    const response = await axios.get(`${baseURL}bikes/getallbikes`);
 
     dispatch({ type: "GET_ALL_CARS", payload: response.data });
     dispatch({ type: "LOADING", payload: false });
@@ -19,7 +20,7 @@ export const addBike = (reqObj) => async (dispatch) => {
   dispatch({ type: "LOADING", payload: true });
 
   try {
-    await axios.post("/bikes/addbike", reqObj);
+    await axios.post(`${baseURL}/bikes/addbike`, reqObj);
 
     dispatch({ type: "LOADING", payload: false });
     message.success("New bike added successfully");
@@ -36,7 +37,7 @@ export const editBike = (reqObj) => async (dispatch) => {
   dispatch({ type: "LOADING", payload: true });
 
   try {
-    await axios.post("/bikes/editbike", reqObj);
+    await axios.post(`${baseURL}/bikes/editbike`, reqObj);
 
     dispatch({ type: "LOADING", payload: false });
     message.success("Bike details updated successfully");
@@ -53,7 +54,7 @@ export const deleteBike = (reqObj) => async (dispatch) => {
   dispatch({ type: "LOADING", payload: true });
 
   try {
-    await axios.post("/bikes/deletebike", reqObj);
+    await axios.post(`${baseURL}/bikes/deletebike`, reqObj);
 
     dispatch({ type: "LOADING", payload: false });
     message.success("Bike deleted successfully");

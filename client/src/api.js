@@ -1,0 +1,1 @@
+export const baseURL="https://bike-rental-main.onrender.com/api"
